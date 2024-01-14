@@ -32,7 +32,11 @@ namespace esvo_core
 namespace tools
 {
 // TUNE this according to your platform's computational capability.
+<<<<<<< HEAD
 #define NUM_THREAD_TRACKING 2
+=======
+#define NUM_THREAD_TRACKING 1
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 #define NUM_THREAD_MAPPING 4
 
 typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;

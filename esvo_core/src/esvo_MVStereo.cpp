@@ -32,10 +32,20 @@ esvo_MVStereo::esvo_MVStereo(
     dpConfigPtr_(new DepthProblemConfig(
         tools::param(pnh_, "patch_size_X", 25),
         tools::param(pnh_, "patch_size_Y", 25),
+<<<<<<< HEAD
            tools::param(pnh_, "LSnorm", std::string("Tdist")),
             tools::param(pnh_, "Tdist_nu", 0.0),
           tools::param(pnh_, "Tdist_scale", 0.0),
     tools::param(pnh_, "ITERATION_OPTIMIZATION", 10))),
+=======
+        tools::param(pnh_, "LSnorm", std::string("Tdist")),
+        tools::param(pnh_, "Tdist_nu", 0.0),
+        tools::param(pnh_, "Tdist_scale", 0.0),
+        tools::param(pnh_, "ITERATION_OPTIMIZATION", 10),
+        tools::param(pnh_, "RegularizationRadius", 5),
+        tools::param(pnh_, "RegularizationMinNeighbours", 8),
+        tools::param(pnh_, "RegularizationMinCloseNeighbours", 8))),
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     dpSolver_(camSysPtr_, dpConfigPtr_, NUMERICAL, NUM_THREAD_MAPPING),
     dFusor_(camSysPtr_, dpConfigPtr_),
     dRegularizor_(dpConfigPtr_),

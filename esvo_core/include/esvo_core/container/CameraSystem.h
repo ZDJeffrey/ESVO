@@ -62,7 +62,10 @@ class CameraSystem
 
   PerspectiveCamera::Ptr cam_left_ptr_, cam_right_ptr_; // intrinsics
   Eigen::Matrix<double, 3, 4> T_right_left_;// extrinsics
+<<<<<<< HEAD
   Eigen::Matrix<double, 3, 4> T_maker_left_;
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   double baseline_;
 };
 }

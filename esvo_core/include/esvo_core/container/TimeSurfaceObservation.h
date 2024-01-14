@@ -49,12 +49,15 @@ struct TimeSurfaceObservation
       cv::Sobel(left->image, cv_dTS_dv_left, CV_64F, 0, 1);
       cv::cv2eigen(cv_dTS_du_left, dTS_du_left_);
       cv::cv2eigen(cv_dTS_dv_left, dTS_dv_left_);
+<<<<<<< HEAD
 
       cv::Mat cv_dTS_du_right, cv_dTS_dv_right;
       cv::Sobel(right->image, cv_dTS_du_right, CV_64F, 1, 0);
       cv::Sobel(right->image, cv_dTS_dv_right, CV_64F, 0, 1);
       cv::cv2eigen(cv_dTS_du_right, dTS_du_right_);
       cv::cv2eigen(cv_dTS_dv_right, dTS_dv_right_);
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 #ifdef TIME_SURFACE_OBSERVATION_LOG
       LOG(INFO) << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Sobel computation (" << id_ << ") takes " << tt.toc() << " ms.";
 #endif
@@ -84,6 +87,7 @@ struct TimeSurfaceObservation
       cv::Mat cv_dTS_du_right, cv_dTS_dv_right;
       cv::Sobel(left->image, cv_dTS_du_left, CV_64F, 1, 0);
       cv::Sobel(left->image, cv_dTS_dv_left, CV_64F, 0, 1);
+<<<<<<< HEAD
       cv::Sobel(right->image, cv_dTS_du_right, CV_64F, 1, 0);
       cv::Sobel(right->image, cv_dTS_dv_right, CV_64F, 0, 1);
 
@@ -91,6 +95,11 @@ struct TimeSurfaceObservation
       cv::cv2eigen(cv_dTS_dv_left, dTS_dv_left_);
       cv::cv2eigen(cv_dTS_du_right, dTS_du_right_);
       cv::cv2eigen(cv_dTS_dv_right, dTS_dv_right_);
+=======
+
+      cv::cv2eigen(cv_dTS_du_left, dTS_du_left_);
+      cv::cv2eigen(cv_dTS_dv_left, dTS_dv_left_);
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
 #ifdef TIME_SURFACE_OBSERVATION_LOG
       LOG(INFO) << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Sobel computation (" << id_ << ") takes " << tt.toc() << " ms.";
@@ -127,16 +136,22 @@ struct TimeSurfaceObservation
 
   inline void getTimeSurfaceNegative(size_t kernelSize)
   {
+<<<<<<< HEAD
     Eigen::MatrixXd ceilMat_left(TS_left_.rows(), TS_left_.cols());
     Eigen::MatrixXd ceilMat_right(TS_right_.rows(), TS_right_.cols());
     ceilMat_left.setConstant(255.0);
     ceilMat_right.setConstant(255.0);
+=======
+    Eigen::MatrixXd ceilMat(TS_left_.rows(), TS_left_.cols());
+    ceilMat.setConstant(255.0);
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     if (kernelSize > 0)
     {
       cv::Mat mat_left_;
       cv::GaussianBlur(cvImagePtr_left_->image, mat_left_,
                        cv::Size(kernelSize, kernelSize), 0.0);
       cv::cv2eigen(mat_left_, TS_blurred_left_);
+<<<<<<< HEAD
       TS_negative_left_ = ceilMat_left - TS_blurred_left_;
 
       cv::Mat mat_right_;
@@ -149,6 +164,13 @@ struct TimeSurfaceObservation
     {
       TS_negative_left_ = ceilMat_left - TS_left_;
       TS_negative_right_ = ceilMat_right - TS_right_;
+=======
+      TS_negative_left_ = ceilMat - TS_blurred_left_;
+    }
+    else
+    {
+      TS_negative_left_ = ceilMat - TS_left_;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     }
   }
 
@@ -163,6 +185,7 @@ struct TimeSurfaceObservation
 
     cv::cv2eigen(cv_dFlippedTS_du_left, dTS_negative_du_left_);
     cv::cv2eigen(cv_dFlippedTS_dv_left, dTS_negative_dv_left_);
+<<<<<<< HEAD
 
     cv::Mat cv_TS_flipped_right;
     cv::eigen2cv(TS_negative_right_, cv_TS_flipped_right);
@@ -184,6 +207,17 @@ struct TimeSurfaceObservation
   Eigen::MatrixXd dTS_du_right_, dTS_dv_right_;
   Eigen::MatrixXd dTS_negative_du_left_, dTS_negative_dv_left_;
   Eigen::MatrixXd dTS_negative_du_right_, dTS_negative_dv_right_;
+=======
+  }
+
+  Eigen::MatrixXd TS_left_, TS_right_;
+  Eigen::MatrixXd TS_blurred_left_;
+  Eigen::MatrixXd TS_negative_left_;
+  cv_bridge::CvImagePtr cvImagePtr_left_, cvImagePtr_right_;
+  Transformation tr_;
+  Eigen::MatrixXd dTS_du_left_, dTS_dv_left_;
+  Eigen::MatrixXd dTS_negative_du_left_, dTS_negative_dv_left_;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   size_t id_;
 };
 

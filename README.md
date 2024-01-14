@@ -4,9 +4,20 @@
 
 Please refer to the **[ESVO Project Page](https://sites.google.com/view/esvo-project-page/home)** for more detailed information and for testing event data.
 
+<<<<<<< HEAD
 ### Related Publications
 
 * **[Event-based Stereo Visual Odometry](https://arxiv.org/abs/2007.15548)**, *Yi Zhou, Guillermo Gallego, Shaojie Shen*, arXiv preprint 2020 (under review).
+=======
+**Videos**
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/3CPPs1gz04k/mqdefault.jpg)](https://www.youtube.com/watch?v=3CPPs1gz04k) &nbsp;&nbsp; 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/NByVeO4Ss5o/mqdefault.jpg)](https://www.youtube.com/watch?v=NByVeO4Ss5o)
+
+### Related Publications
+
+* **[Event-based Stereo Visual Odometry](https://arxiv.org/abs/2007.15548)**, *Yi Zhou, Guillermo Gallego, Shaojie Shen*, IEEE Transactions on Robotics (T-RO) 2021.
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
 * **[Semi-dense 3D Reconstruction with a Stereo Event Camera](https://arxiv.org/abs/1807.07429)**, *Yi Zhou, Guillermo Gallego, Henri Rebecq, Laurent Kneip, Hongdong Li, Davide Scaramuzza*, ECCV 2018.
 
@@ -174,7 +185,11 @@ maintained at each coordinate.
 - `Tdist_stdvar` : Parameter of the applied Student's t distribution.
 - `bVisualizeGlobalPC` : Set `True` to visualize global pointcloud.
 - `visualizeGPC_interval` : Time interval to push new points to global pointcloud.
+<<<<<<< HEAD
 - `NumGPC_added_per_refresh` : Number of points pushed to global pointcloud.
+=======
+- `NumGPC_added_oper_refresh` : Number of points pushed to global pointcloud.
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
 ## Tracking
 - `invDepth_min_range` : Lower bound for the depth of input pointcoud. (Used for visualization only).
@@ -243,4 +258,11 @@ This commit fixed the running issue on machines with **Ubuntu 20.04 + ROS Noetic
 This module maybe useful for people who are interested in event-based multi-view stereo (MVS) methods,
 which typically assume poses are known as prior knowledge.
 Besides, methods in [26], [45] are also implemented for comparison purpose.
+<<<<<<< HEAD
 Please refer to `2.3 esvo_core/mvstereo`.
+=======
+Please refer to `2.3 esvo_core/mvstereo`. 
+* **23/02/2021** ESVO was integrated into the modular iniVation DV software platform. 
+It runs at up to 200 fps on Jetson TX2, and is fully open-source. 
+Download here: https://lnkd.in/deuRKSK.
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b

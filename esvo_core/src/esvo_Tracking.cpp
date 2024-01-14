@@ -5,8 +5,13 @@
 #include <tf/transform_broadcaster.h>
 #include <sys/stat.h>
 
+<<<<<<< HEAD
 // #define ESVO_CORE_TRACKING_DEBUG
 // #define ESVO_CORE_TRACKING_LOG
+=======
+//#define ESVO_CORE_TRACKING_DEBUG
+//#define ESVO_CORE_TRACKING_DEBUG
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
 namespace esvo_core
 {
@@ -63,17 +68,27 @@ esvo_Tracking::esvo_Tracking(
 
   /*** For Visualization and Test ***/
   reprojMap_pub_left_  = it_.advertise("Reproj_Map_Left", 1);
+<<<<<<< HEAD
   depthMap_pub_ref_    = it_.advertise("DepthMap_Ref", 1);
   depthMap_pub_cur_    = it_.advertise("DepthMap_Cur", 1);
   rpSolver_.setRegPublisher(&reprojMap_pub_left_, &depthMap_pub_ref_, &depthMap_pub_cur_);
 
+=======
+  rpSolver_.setRegPublisher(&reprojMap_pub_left_);
+
+  /*** Tracker ***/
+  T_world_cur_ = Eigen::Matrix<double,4,4>::Identity();
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   std::thread TrackingThread(&esvo_Tracking::TrackingLoop, this);
   TrackingThread.detach();
 }
 
 esvo_Tracking::~esvo_Tracking()
 {
+<<<<<<< HEAD
   ofs.close(); // 关闭输出文件
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   pose_pub_.shutdown();
 }
 
@@ -140,6 +155,7 @@ void esvo_Tracking::TrackingLoop()
       if(rpType_ == REG_NUMERICAL)
         rpSolver_.solve_numerical();
       if(rpType_ == REG_ANALYTICAL)
+<<<<<<< HEAD
         {
           if(!rpSolver_.solve_analytical()) // 优化失败
           {
@@ -149,6 +165,9 @@ void esvo_Tracking::TrackingLoop()
             continue;
           }
         }
+=======
+        rpSolver_.solve_analytical();
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 #ifdef ESVO_CORE_TRACKING_DEBUG
       t_solve = tt.toc();
       tt.tic();
@@ -172,24 +191,34 @@ void esvo_Tracking::TrackingLoop()
     else
     {
       nh_.setParam("/ESVO_SYSTEM_STATUS", "INITIALIZATION");
+<<<<<<< HEAD
     //   ets_ = IDLE;
+=======
+      ets_ = IDLE;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 //      LOG(INFO) << "Tracking thread is IDLE";
     }
 
 #ifdef  ESVO_CORE_TRACKING_LOG
     double t_overall_count = 0;
     t_overall_count = t_resetRegProblem + t_solve + t_pub_result;
+<<<<<<< HEAD
     static double total_solve = 0;
     static unsigned long long solve_count = 0;
     total_solve += t_solve;
     solve_count += 1;
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     LOG(INFO) << "\n";
     LOG(INFO) << "------------------------------------------------------------";
     LOG(INFO) << "--------------------Tracking Computation Cost---------------";
     LOG(INFO) << "------------------------------------------------------------";
     LOG(INFO) << "ResetRegProblem: " << t_resetRegProblem << " ms, (" << t_resetRegProblem / t_overall_count * 100 << "%).";
     LOG(INFO) << "Registration: " << t_solve << " ms, (" << t_solve / t_overall_count * 100 << "%).";
+<<<<<<< HEAD
     LOG(INFO) << "Registration average:"<<total_solve/solve_count<<" ms, ("<<total_solve<<" / "<<solve_count<<").";
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     LOG(INFO) << "pub result: " << t_pub_result << " ms, (" << t_pub_result / t_overall_count * 100 << "%).";
     LOG(INFO) << "Total Computation (" << rpSolver_.lmStatics_.nPoints_ << "): " << t_overall_count << " ms.";
     LOG(INFO) << "------------------------------------------------------------";
@@ -264,7 +293,10 @@ esvo_Tracking::curDataTransferring()
   if(ESVO_System_Status_ == "INITIALIZATION" && ets_ == IDLE)
   {
     cur_.tr_ = ref_.tr_;
+<<<<<<< HEAD
     cur_.tr_right_ = ref_.tr_;
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 //    LOG(INFO) << "(IDLE) Assign cur's ("<< cur_.t_.toNSec() << ") pose with ref's at " << ref_.t_.toNSec();
     // LOG(INFO) << " " << cur_.tr_.getTransformationMatrix() << " ";
   }

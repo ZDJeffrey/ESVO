@@ -1,8 +1,13 @@
 <launch>
   <!-- ROS BAG -->
   <rosparam param="/use_sim_time">true</rosparam>
+<<<<<<< HEAD
   <node pkg="rosbag" type="play" name="play" required="true"
     args="/home/jeffrey/RMS/bag/rpg_boxes_edited.bag -r 0.50 --clock">
+=======
+  <node pkg="rosbag" type="play" name="play" output="screen" required="true"
+    args="/home/zhouyi/workspace/dataset/DVS/rpg_eccv2018/rewrite/release/rpg_boxes_edited.bag -r 0.5 --clock">
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     <!-- MODIFY THE ABOVE DIRECTORY -->
   </node>
 

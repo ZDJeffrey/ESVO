@@ -81,7 +81,10 @@ DepthFusion::update(
     DepthPoint dp_prop;
     if (!propagate_one_point(dp_obs[i], dp_prop, T_frame_obs))
       continue;
+<<<<<<< HEAD
 //    LOG(INFO) << "Update: dp_prop.residual(): " << dp_prop.residual();
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     numFusion += fusion(dp_prop, df->dMap_, fusion_radius);
   }
   return numFusion;
@@ -138,6 +141,10 @@ DepthFusion::fusion(
         exit(-1);
 
       dp_new.residual() = dp_prop.residual();
+<<<<<<< HEAD
+=======
+      dp_new.age() = dp_prop.age();
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
       Eigen::Vector3d p_cam;
       camSysPtr_->cam_left_ptr_->cam2World(dp_new.x(), dp_prop.invDepth(), p_cam);
       dp_new.update_p_cam(p_cam);
@@ -240,7 +247,11 @@ DepthFusion::naive_propagation(
   {
     Eigen::Matrix<double, 4, 4> T_frame_obs = T_frame_world * dp_obs[i].T_world_cam();
     DepthPoint dp_prop;
+<<<<<<< HEAD
     if (!naive_propagate_one_point(dp_obs[i], dp_prop, T_frame_obs)) // 从obs转换到frame
+=======
+    if (!naive_propagate_one_point(dp_obs[i], dp_prop, T_frame_obs))
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
       continue;
 
     // determine the four neighbouring pixels

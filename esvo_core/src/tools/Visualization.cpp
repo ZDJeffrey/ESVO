@@ -7,7 +7,11 @@ namespace tools
 
 Visualization::Visualization() {}
 
+<<<<<<< HEAD
 Visualization::~Visualization() {}  
+=======
+Visualization::~Visualization() {}
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
 void
 Visualization::plot_map(
@@ -28,6 +32,7 @@ Visualization::plot_map(
   {
     case InvDepthMap:
     {
+<<<<<<< HEAD
     //   std::vector<double> vDepth;
     //   vDepth.reserve(10000);
       for (auto it = depthMapPtr->begin(); it != depthMapPtr->end(); it++)
@@ -39,6 +44,13 @@ Visualization::plot_map(
         //   vDepth.emplace_back(1.0 / it->invDepth());
           DrawPoint(it->invDepth(), max_range, min_range, it->x(), img);
         }
+=======
+      for (auto it = depthMapPtr->begin(); it != depthMapPtr->end(); it++)
+      {
+        if (it->valid() && it->variance() < pow(visualization_threshold1, 2)
+            && it->age() >= (int) visualization_threshold2)
+          DrawPoint(it->invDepth(), max_range, min_range, it->x(), img);
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
       }
       break;
     }

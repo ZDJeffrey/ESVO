@@ -44,6 +44,7 @@ class RegProblemSolverLM
   bool resetRegProblem(RefFrame* ref, CurFrame* cur);
   bool solve_numerical();// relatively slower
   bool solve_analytical();// faster
+<<<<<<< HEAD
   bool solve(std::shared_ptr<RegProblemLM> job);
 
   // For test and visualization
@@ -60,6 +61,13 @@ class RegProblemSolverLM
   double f_; // 焦距
   double baseline_; // 基线
 
+=======
+
+  // For test and visualization
+  void setRegPublisher(image_transport::Publisher* reprojMap_pub);
+  LM_statics lmStatics_;// record LevenburgMarquardt log.
+
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   // variables
 private:
   CameraSystem::Ptr& camSysPtr_;
@@ -67,7 +75,11 @@ private:
   size_t NUM_THREAD_;
   RegProblemType rpType_;
 
+<<<<<<< HEAD
   std::shared_ptr<RegProblemLM> regProblemPtr_,regProblemPtr_right_;
+=======
+  std::shared_ptr<RegProblemLM> regProblemPtr_;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   std::shared_ptr<Eigen::NumericalDiff<RegProblemLM> > numDiff_regProblemPtr_;
 
   // For test

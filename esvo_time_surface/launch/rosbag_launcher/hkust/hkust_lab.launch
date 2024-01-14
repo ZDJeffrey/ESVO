@@ -1,7 +1,11 @@
 <launch>
   <!-- ROS BAG -->
   <rosparam param="/use_sim_time">true</rosparam>
+<<<<<<< HEAD
   <node pkg="rosbag" type="play" name="play" required="true"
+=======
+  <node pkg="rosbag" type="play" name="play" output="screen" required="true"
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     args="/home/zhouyi/workspace/dataset/DVS/hkust/rewrite/release/hkust_lab.bag -r 0.5 --clock">
     <!-- MODIFY THE ABOVE DIRECTORY -->
   </node>

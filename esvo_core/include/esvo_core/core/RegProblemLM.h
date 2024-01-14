@@ -69,7 +69,11 @@ struct CurFrame
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   ros::Time t_;
   TimeSurfaceObservation* pTsObs_;
+<<<<<<< HEAD
   Transformation tr_, tr_right_;
+=======
+  Transformation tr_;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   Transformation tr_old_;
   size_t numEventsSinceLastObs_;
 };
@@ -81,7 +85,11 @@ struct RegProblemLM : public optimization::OptimizationFunctor<double>
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     ResidualItems* pvRI_;
     const TimeSurfaceObservation* pTsObs_;
+<<<<<<< HEAD
     const Eigen::Matrix4d* T_cur_ref_;
+=======
+    const Eigen::Matrix4d* T_left_ref_;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
     size_t i_thread_;
   };
 
@@ -89,9 +97,14 @@ struct RegProblemLM : public optimization::OptimizationFunctor<double>
   RegProblemLM(
     const CameraSystem::Ptr& camSysPtr,
     const RegProblemConfig::Ptr& rpConfig_ptr,
+<<<<<<< HEAD
     size_t numThread = 1,
     bool bLeft = true);
   void setProblem(Eigen::Matrix4d& T_world_ref, CurFrame* cur, ResidualItems* pResItems, bool bComputeGrad = false, bool bLeft = true);
+=======
+    size_t numThread = 1);
+  void setProblem(RefFrame* ref, CurFrame* cur, bool bComputeGrad = false);
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   void setStochasticSampling(size_t offset, size_t N);
 
   void getWarpingTransformation(
@@ -112,22 +125,34 @@ struct RegProblemLM : public optimization::OptimizationFunctor<double>
     Eigen::Vector2d& patchCentreCoord,
     Eigen::MatrixXi& mask,
     size_t wx,
+<<<<<<< HEAD
     size_t wy,
     size_t width,
     size_t height) const;
+=======
+    size_t wy) const;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
   bool reprojection(
     const Eigen::Vector3d& p,
     const Eigen::Matrix4d& warpingTransf,
+<<<<<<< HEAD
     Eigen::Vector2d &x1_s,
     esvo_core::container::PerspectiveCamera::Ptr cam_ptr) const;
+=======
+    Eigen::Vector2d &x1_s) const;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
   bool patchInterpolation(
     const Eigen::MatrixXd &img,
     const Eigen::Vector2d &location,
     Eigen::MatrixXd &patch,
     bool debug = false) const;
+<<<<<<< HEAD
 
+=======
+  //
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   CameraSystem::Ptr camSysPtr_;
   RegProblemConfig::Ptr rpConfigPtr_;
   size_t patchSize_;
@@ -136,11 +161,20 @@ struct RegProblemLM : public optimization::OptimizationFunctor<double>
   size_t numPoints_;
   size_t numBatches_;
 
+<<<<<<< HEAD
   ResidualItems *pResItems_, ResItemsStochSampled_;
   TimeSurfaceObservation* pTsObs_;
   CurFrame* cur_;
 
   Eigen::Matrix<double,4,4> T_world_cur_;// to record the current pose
+=======
+  ResidualItems ResItems_, ResItemsStochSampled_;
+  TimeSurfaceObservation* pTsObs_;
+  RefFrame* ref_;
+  CurFrame* cur_;
+
+  Eigen::Matrix<double,4,4> T_world_left_;// to record the current pose
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   Eigen::Matrix<double,4,4> T_world_ref_;// to record the ref pose (local ref map)
   Eigen::Matrix3d R_;//R_ref_cur_;
   Eigen::Vector3d t_;//t_ref_cur
@@ -149,8 +183,11 @@ struct RegProblemLM : public optimization::OptimizationFunctor<double>
   Eigen::Matrix<double,12,6> J_G_0_;
   // debug
   bool bPrint_;
+<<<<<<< HEAD
   // 使用左右相机
   bool bLeft_;
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 };// struct RegProblemLM
 }// namespace core
 }// namespace esvo_core

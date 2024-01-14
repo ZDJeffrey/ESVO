@@ -82,7 +82,11 @@ class esvo_Tracking
   ros::Subscriber map_sub_;
   message_filters::Subscriber<sensor_msgs::Image> TS_left_sub_, TS_right_sub_;
   ros::Subscriber stampedPose_sub_;
+<<<<<<< HEAD
   image_transport::Publisher reprojMap_pub_left_, depthMap_pub_ref_, depthMap_pub_cur_;
+=======
+  image_transport::Publisher reprojMap_pub_left_;
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
   // publishers
   ros::Publisher pose_pub_, path_pub_;
@@ -131,9 +135,12 @@ class esvo_Tracking
   std::string ESVO_System_Status_;
   RegProblemConfig::Ptr rpConfigPtr_;
   RegProblemSolverLM rpSolver_;
+<<<<<<< HEAD
 
   // groundtruth输出
   std::ofstream ofs;
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 };
 }
 

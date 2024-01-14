@@ -193,8 +193,11 @@ void CameraSystem::loadCalibInfo(const std::string &cameraSystemDir, bool bPrint
   vP_right = rightCamCalibInfo["projection_matrix"]["data"].as< std::vector<double> >();
 
   vT_right_left = leftCamCalibInfo["T_right_left"]["data"].as< std::vector<double> >();
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
 
   cam_left_ptr_->setIntrinsicParameters(
     width, height,
@@ -209,6 +212,7 @@ void CameraSystem::loadCalibInfo(const std::string &cameraSystemDir, bool bPrint
 
   T_right_left_ = Eigen::Matrix<double,3,4,Eigen::RowMajor>(vT_right_left.data());
 
+<<<<<<< HEAD
   if(cameraNameLeft=="rpg_DAVIS240C_left")// rpg
   {
     std::vector<double> vT_maker_left = leftCamCalibInfo["T_marker_left"].as<std::vector<double>>();
@@ -217,6 +221,8 @@ void CameraSystem::loadCalibInfo(const std::string &cameraSystemDir, bool bPrint
   else 
     T_maker_left_ = Eigen::Matrix<double,3,4>::Identity();
 
+=======
+>>>>>>> fb90dea0b24cf2cb8580ecfbc49355882b3f5c8b
   if(bPrintCalibInfo)
     printCalibInfo();
 }
