@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="rosbag" type="record" name="record" output="screen" required="true"
+        args="-O /home/jeffrey/RMS/rpg_monitor/evaluate_rpg_monitor.bag /esvo_tracking/pose_pub" />
+    <include file="$(find esvo_core)/launch/system/system_rpg.launch" />
+    <include file="$(find esvo_time_surface)/launch/rosbag_launcher/rpg/rpg_monitor.launch" />
+</launch>

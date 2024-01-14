@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/jeffrey/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/jeffrey/catkin_ws/src/eigen_checks/include/**",
+        "/home/jeffrey/catkin_ws/src/ESVO/esvo_core/include/**",
+        "/home/jeffrey/catkin_ws/src/ESVO/esvo_time_surface/include/**",
+        "/home/jeffrey/catkin_ws/src/minkindr/minkindr/include/**",
+        "/home/jeffrey/catkin_ws/src/minkindr_ros/minkindr_conversions/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

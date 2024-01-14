@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="rosbag" type="record" name="record_pose" output="screen" required="true"
+        args="-O /home/jeffrey/RMS/upenn1/evaluate_upenn1.bag /esvo_tracking/pose_pub" />
+    <node pkg="rosbag" type="record" name="record_depthMap_ref" output="screen" required="true"
+        args="-O /home/jeffrey/RMS/upenn1/upenn1_depthMap_ref.bag /DepthMap_Ref" />
+    <node pkg="rosbag" type="record" name="record_depthMap_cur" output="screen" required="true"
+        args="-O /home/jeffrey/RMS/upenn1/upenn1_depthMap_cur.bag /DepthMap_Cur" />
+    <include file="$(find esvo_core)/launch/system/system_upenn.launch" />
+    <include file="$(find esvo_time_surface)/launch/rosbag_launcher/upenn/upenn_indoor_flying1.launch" />
+</launch>
